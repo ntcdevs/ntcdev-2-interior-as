@@ -1,3 +1,4 @@
+"use client";
 import { Phone, Mail, MapPin } from "lucide-react";
 import config from "@/config.json";
 

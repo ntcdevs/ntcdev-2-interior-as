@@ -1,3 +1,4 @@
+"use client";
 import config from "@/config.json";
 
 export default function Footer() {

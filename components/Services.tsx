@@ -1,3 +1,4 @@
+"use client";
 import {
   Scissors, Sparkles, Star, Droplets, Wind, Crown,
   Dumbbell, Zap, UtensilsCrossed, Heart, Shield, Flame,
