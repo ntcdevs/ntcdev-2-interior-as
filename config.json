@@ -6,30 +6,43 @@
     "city": "Oslo",
     "category": "barbershop",
     "phone": "+47 22 11 22 33",
-    "email": "post@frisorhansen.no"
+    "email": "post@frisorhansen.no",
+    "address": "Karl Johans gate 12, 0154 Oslo"
   },
   "theme": {
-    "primaryColor": "#1A1A1A",
-    "accentColor": "#C9A96E",
-    "heroStyle": "dark"
+    "primaryColor": "#0c0c0c",
+    "accentColor": "#c9a84c",
+    "textColor": "#f5f0e8"
   },
   "hero": {
-    "headline": "En nettside som faktisk selger",
-    "subheadline": "Se hvordan Hansen Frisør ser ut med moderne design og rask innlasting",
-    "ctaText": "Book time nå"
+    "eyebrow": "Profesjonell Hårsalong",
+    "headline": "Hansen",
+    "headlineAccent": "Frisør",
+    "subheadline": "Vi skaper mer enn bare hårklipp — vi skaper selvtillit. Opplev ekspertise og omsorg i hver behandling.",
+    "ctaText": "Bestill Time"
   },
   "services": [
-    { "name": "Herreklipp", "desc": "Klassisk og moderne klipp tilpasset din stil og ansiktsform." },
-    { "name": "Skjeggstell", "desc": "Profesjonell forming og stell av skjegg med varmt håndkle." },
-    { "name": "Hodebunnsmassasje", "desc": "Avslappende massasje som stimulerer hårvekst og gir velvære." }
+    { "name": "Herreklipp", "desc": "Klassisk og moderne klipp tilpasset din stil og ansiktsform. Inkluderer vask og føning.", "icon": "Scissors", "price": "Fra 350 kr" },
+    { "name": "Dameklipp", "desc": "Profesjonell klipp med konsultasjon, vask, klipp og styling etter dine ønsker.", "icon": "Sparkles", "price": "Fra 550 kr" },
+    { "name": "Skjeggstell", "desc": "Profesjonell forming og stell av skjegg med varmt håndkle og premium produkter.", "icon": "Star", "price": "Fra 250 kr" }
   ],
+  "about": {
+    "heading": "Vår Historie",
+    "body": "Siden 1998 har vi servert kunder i Oslo med stolthet og lidenskap. Vi tror på at et godt hårklipp handler om mer enn utseende — det handler om selvtillit og velvære.",
+    "stat1": { "value": "25+", "label": "År med erfaring" },
+    "stat2": { "value": "5000+", "label": "Fornøyde kunder" },
+    "stat3": { "value": "100%", "label": "Fornøydhet garantert" }
+  },
   "images": {
     "hero": "barbershop/hero-01.jpg",
+    "about": "barbershop/shop-01.jpg",
     "gallery": [
       "barbershop/shop-01.jpg",
       "barbershop/shop-02.jpg",
       "barbershop/style-01.jpg",
-      "barbershop/style-02.jpg"
+      "barbershop/style-02.jpg",
+      "barbershop/hero-02.jpg",
+      "barbershop/shop-03.jpg"
     ]
   }
 }
