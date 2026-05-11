@@ -1,9 +1,17 @@
 "use client";
 import { Phone, Mail, MapPin } from "lucide-react";
+import SectionHeader from "@/components/shared/SectionHeader";
 import config from "@/config.json";
 
 export default function Contact() {
-  const { theme, business } = config;
+  const { theme, business, contact } = config;
+  const { accentColor, primaryColor, textColor, mode } = theme;
+  const isLight = mode === "light";
+  const bg = isLight ? "#ffffff" : primaryColor;
+  const cardBg = isLight ? "#f8fafc" : `${textColor}04`;
+  const cardBorder = isLight ? "#e2e8f0" : `${textColor}0d`;
+  const valueColor = isLight ? "#0f172a" : textColor;
+  const labelColor = isLight ? "#94a3b8" : `${textColor}40`;
 
   const items = [
     business.phone && {
@@ -30,43 +38,28 @@ export default function Contact() {
     <section
       id="kontakt"
       className="py-32 px-6 relative"
-      style={{ backgroundColor: theme.primaryColor }}
+      style={{ backgroundColor: bg }}
     >
-      {/* Subtle dot texture */}
-      <div
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-        }}
-      />
+      {!isLight && (
+        <div
+          className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+      )}
 
       <div className="max-w-7xl mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* Left */}
           <div>
-            <p
-              className="font-[family-name:var(--font-inter)] text-xs tracking-[0.4em] uppercase mb-4"
-              style={{ color: theme.accentColor }}
-            >
-              Ta Kontakt
-            </p>
-            <h2
-              className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-semibold mb-6"
-              style={{ color: theme.textColor }}
-            >
-              Kontakt Oss
-            </h2>
-            <div className="flex items-center gap-4 mb-8">
-              <div className="h-px w-16" style={{ backgroundColor: `${theme.accentColor}66` }} />
-              <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.accentColor }} />
-            </div>
-            <p
-              className="font-[family-name:var(--font-inter)] text-lg leading-relaxed font-light"
-              style={{ color: `${theme.textColor}66` }}
-            >
-              Vi svarer raskt og hjelper deg gjerne. Ta kontakt for time eller spørsmål.
-            </p>
+            <SectionHeader
+              eyebrow={contact.eyebrow}
+              heading={contact.heading}
+              subheading={contact.subheading}
+              align="left"
+            />
           </div>
 
           {/* Right — contact cards */}
@@ -79,32 +72,32 @@ export default function Contact() {
                   key={i}
                   {...(item.href ? { href: item.href } : {})}
                   className="flex items-center gap-6 p-6 group transition-all duration-300"
-                  style={{ border: `1px solid ${theme.textColor}0d`, backgroundColor: `${theme.textColor}04` }}
+                  style={{ border: `1px solid ${cardBorder}`, backgroundColor: cardBg }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = `${theme.accentColor}44`;
-                    (e.currentTarget as HTMLElement).style.backgroundColor = `${theme.textColor}08`;
+                    (e.currentTarget as HTMLElement).style.borderColor = `${accentColor}44`;
+                    (e.currentTarget as HTMLElement).style.backgroundColor = isLight ? "#f1f5f9" : `${textColor}08`;
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = `${theme.textColor}0d`;
-                    (e.currentTarget as HTMLElement).style.backgroundColor = `${theme.textColor}04`;
+                    (e.currentTarget as HTMLElement).style.borderColor = cardBorder;
+                    (e.currentTarget as HTMLElement).style.backgroundColor = cardBg;
                   }}
                 >
                   <div
                     className="w-14 h-14 flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: theme.accentColor }}
+                    style={{ backgroundColor: accentColor }}
                   >
-                    <Icon size={20} style={{ color: theme.primaryColor }} />
+                    <Icon size={20} style={{ color: isLight ? "#ffffff" : primaryColor }} />
                   </div>
                   <div>
                     <p
                       className="font-[family-name:var(--font-inter)] text-xs tracking-widest uppercase mb-1"
-                      style={{ color: `${theme.textColor}40` }}
+                      style={{ color: labelColor }}
                     >
                       {item.label}
                     </p>
                     <p
                       className="font-[family-name:var(--font-inter)] text-lg font-medium transition-colors duration-300"
-                      style={{ color: theme.textColor }}
+                      style={{ color: valueColor }}
                     >
                       {item.value}
                     </p>

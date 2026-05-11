@@ -13,9 +13,11 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen]         = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { accentColor, primaryColor, textColor } = config.theme;
+  const { accentColor, primaryColor, textColor, mode } = config.theme;
+
+  const isLight = mode === "light";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -23,21 +25,31 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navBg = scrolled
+    ? isLight
+      ? `rgba(255,255,255,0.97)`
+      : `${primaryColor}f5`
+    : "transparent";
+
+  const navBorder = scrolled ? `${accentColor}33` : "transparent";
+  const linkColor = isLight && !scrolled ? "#ffffff" : textColor;
+
   return (
     <header
       style={{
-        backgroundColor: scrolled ? `${primaryColor}f5` : "transparent",
-        borderBottomColor: scrolled ? `${accentColor}33` : "transparent",
+        backgroundColor: navBg,
+        borderBottomColor: navBorder,
         backdropFilter: scrolled ? "blur(12px)" : "none",
+        boxShadow: scrolled && isLight ? "0 1px 20px rgba(0,0,0,0.08)" : "none",
       }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b py-4"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b"
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
         {/* Logo */}
-        <a href="#hjem" className="flex items-center gap-2">
+        <a href="#hjem">
           <span
-            className="font-[family-name:var(--font-playfair)] text-xl font-semibold tracking-widest uppercase"
-            style={{ color: textColor }}
+            className="font-[family-name:var(--font-playfair)] text-xl font-semibold tracking-widest uppercase transition-colors duration-500"
+            style={{ color: scrolled && isLight ? textColor : (isLight ? "#ffffff" : textColor) }}
           >
             {config.business.name}
           </span>
@@ -49,10 +61,10 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="font-[family-name:var(--font-inter)] text-sm tracking-widest uppercase transition-colors duration-300"
-              style={{ color: `${textColor}99` }}
+              className="font-[family-name:var(--font-inter)] text-sm tracking-widest uppercase transition-colors duration-300 hover:opacity-100"
+              style={{ color: `${linkColor}99` }}
               onMouseEnter={(e) => (e.currentTarget.style.color = accentColor)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = `${textColor}99`)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = `${linkColor}99`)}
             >
               {l.label}
             </a>
@@ -63,7 +75,7 @@ export default function Navbar() {
             style={{ border: `1px solid ${accentColor}`, color: accentColor }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor = accentColor;
-              (e.currentTarget as HTMLElement).style.color = primaryColor;
+              (e.currentTarget as HTMLElement).style.color = isLight ? "#ffffff" : primaryColor;
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
@@ -74,10 +86,9 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile hamburger */}
         <button
           className="md:hidden transition-colors"
-          style={{ color: textColor }}
+          style={{ color: scrolled && isLight ? textColor : (isLight ? "#ffffff" : textColor) }}
           onClick={() => setOpen(!open)}
           aria-label="Meny"
         >
@@ -85,11 +96,13 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div
           className="md:hidden border-t"
-          style={{ backgroundColor: `${primaryColor}f8`, borderColor: `${accentColor}22` }}
+          style={{
+            backgroundColor: isLight ? "rgba(255,255,255,0.98)" : `${primaryColor}f8`,
+            borderColor: `${accentColor}22`,
+          }}
         >
           <nav className="flex flex-col px-6 py-6 gap-4">
             {links.map((l) => (
@@ -106,7 +119,7 @@ export default function Navbar() {
             <a
               href="#kontakt"
               onClick={() => setOpen(false)}
-              className="mt-2 px-5 py-3 text-sm tracking-widest uppercase text-center font-[family-name:var(--font-inter)] transition-all duration-300"
+              className="mt-2 px-5 py-3 text-sm tracking-widest uppercase text-center font-[family-name:var(--font-inter)]"
               style={{ border: `1px solid ${accentColor}`, color: accentColor }}
             >
               Bestill Time

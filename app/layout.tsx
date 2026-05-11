@@ -12,24 +12,25 @@ const playfair = Playfair_Display({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: `${config.business.name} – ${config.hero.eyebrow}`,
-  description: config.business.description,
+  description: config.hero.subheadline,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const { primaryColor, accentColor, textColor } = config.theme;
+  const { primaryColor, accentColor, textColor, heroColor } = config.theme;
   return (
     <html lang="no" className={`${playfair.variable} ${inter.variable}`}>
       <head>
         <style>{`
           :root {
-            --color-primary: ${primaryColor};
-            --color-accent:  ${accentColor};
-            --color-text:    ${textColor};
+            --color-primary:  ${primaryColor};
+            --color-accent:   ${accentColor};
+            --color-text:     ${textColor};
+            --color-hero:     ${heroColor ?? primaryColor};
           }
         `}</style>
       </head>

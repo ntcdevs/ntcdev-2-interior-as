@@ -1,135 +1,60 @@
+import SectionHeader from "@/components/shared/SectionHeader";
 import config from "@/config.json";
 
-function imgUrl(path: string): string {
-  if (path.startsWith("http")) return path;
+function imgUrl(p: string) {
+  if (p.startsWith("http")) return p;
   const base = process.env.NEXT_PUBLIC_STORAGE_URL ?? "";
-  if (!base) return "";
-  return `${base}/${path}`;
+  return base ? `${base}/${p}` : "";
 }
 
 export default function About() {
-  const { theme, business, about, images } = config;
-  const aboutImg = imgUrl(images.about ?? images.gallery[0]);
+  const { theme, about, business, images } = config;
+  const { accentColor, primaryColor, textColor, mode } = theme;
+  const isLight = mode === "light";
+  const bg = isLight ? "#f8fafc" : primaryColor;
+  const statBg = isLight ? "#ffffff" : `${textColor}05`;
+  const statBorder = isLight ? "#e2e8f0" : `${textColor}0d`;
+  const bodyColor = isLight ? "#475569" : `${textColor}70`;
 
   return (
-    <section
-      id="om-oss"
-      className="py-32 px-6 relative"
-      style={{ backgroundColor: `${theme.primaryColor}` }}
-    >
-      {/* Accent line left */}
-      <div
-        className="absolute left-0 top-0 bottom-0 w-px opacity-10"
-        style={{ background: `linear-gradient(to bottom, transparent, ${theme.accentColor}, transparent)` }}
-      />
-
+    <section id="om-oss" className="py-32 px-6 relative" style={{ backgroundColor: bg }}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          {/* Image side */}
+          {/* Image */}
           <div className="relative">
-            <div
-              className="absolute -inset-4 opacity-20 blur-2xl"
-              style={{ backgroundColor: theme.accentColor }}
-            />
-            <div
-              className="relative aspect-[4/5] overflow-hidden"
-              style={{ border: `1px solid ${theme.accentColor}22` }}
-            >
-              {aboutImg ? (
+            <div className="absolute -inset-4 blur-2xl opacity-10 rounded-full" style={{ backgroundColor: accentColor }} />
+            <div className="relative aspect-[4/5] overflow-hidden" style={{ border: `1px solid ${accentColor}22` }}>
+              {imgUrl(images.about ?? images.gallery[0]) ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={aboutImg}
-                  alt={business.name}
-                  className="w-full h-full object-cover"
-                />
+                <img src={imgUrl(images.about ?? images.gallery[0])} alt={business.name} className="w-full h-full object-cover" />
               ) : (
-                <div
-                  className="w-full h-full flex items-center justify-center"
-                  style={{ backgroundColor: `${theme.textColor}05` }}
-                >
-                  <span
-                    className="font-[family-name:var(--font-playfair)] text-6xl font-semibold opacity-20"
-                    style={{ color: theme.accentColor }}
-                  >
+                <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: `${accentColor}10` }}>
+                  <span className="font-[family-name:var(--font-playfair)] text-9xl font-bold opacity-10" style={{ color: accentColor }}>
                     {business.name.charAt(0)}
                   </span>
                 </div>
               )}
-              {/* Gold corner accent */}
-              <div
-                className="absolute bottom-0 right-0 w-16 h-16"
-                style={{ background: `linear-gradient(135deg, transparent 50%, ${theme.accentColor}33 50%)` }}
-              />
+              <div className="absolute bottom-0 right-0 w-16 h-16"
+                style={{ background: `linear-gradient(135deg, transparent 50%, ${accentColor}44 50%)` }} />
             </div>
-
             {/* Floating stat */}
-            <div
-              className="absolute -bottom-6 -right-6 p-6"
-              style={{ backgroundColor: theme.accentColor }}
-            >
-              <p
-                className="font-[family-name:var(--font-playfair)] text-4xl font-bold"
-                style={{ color: theme.primaryColor }}
-              >
-                {about.stat1.value}
-              </p>
-              <p
-                className="font-[family-name:var(--font-inter)] text-xs tracking-widest uppercase mt-1"
-                style={{ color: `${theme.primaryColor}cc` }}
-              >
-                {about.stat1.label}
-              </p>
+            <div className="absolute -bottom-6 -right-6 p-6" style={{ backgroundColor: accentColor }}>
+              <p className="font-[family-name:var(--font-playfair)] text-4xl font-bold" style={{ color: isLight ? "#ffffff" : primaryColor }}>{about.stat1.value}</p>
+              <p className="font-[family-name:var(--font-inter)] text-xs tracking-widest uppercase mt-1" style={{ color: isLight ? "#ffffffcc" : `${primaryColor}cc` }}>{about.stat1.label}</p>
             </div>
           </div>
 
-          {/* Text side */}
+          {/* Text */}
           <div>
-            <p
-              className="font-[family-name:var(--font-inter)] text-xs tracking-[0.4em] uppercase mb-4"
-              style={{ color: theme.accentColor }}
-            >
-              Om Oss
-            </p>
-            <h2
-              className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-semibold mb-6"
-              style={{ color: theme.textColor }}
-            >
-              {about.heading}
-            </h2>
-
-            {/* Divider */}
-            <div className="flex items-center gap-4 mb-8">
-              <div className="h-px w-16" style={{ backgroundColor: `${theme.accentColor}66` }} />
-              <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.accentColor }} />
-            </div>
-
-            <p
-              className="font-[family-name:var(--font-inter)] text-lg leading-relaxed font-light mb-10"
-              style={{ color: `${theme.textColor}80` }}
-            >
+            <SectionHeader eyebrow={about.eyebrow} heading={about.heading} align="left" />
+            <p className="font-[family-name:var(--font-inter)] text-lg leading-relaxed font-light mb-10" style={{ color: bodyColor }}>
               {about.body}
             </p>
-
-            {/* Stats row */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4">
               {[about.stat2, about.stat3].map((stat, i) => (
-                <div
-                  key={i}
-                  className="p-6"
-                  style={{ border: `1px solid ${theme.textColor}0d`, backgroundColor: `${theme.textColor}04` }}
-                >
-                  <p
-                    className="font-[family-name:var(--font-playfair)] text-3xl font-bold mb-1"
-                    style={{ color: theme.accentColor }}
-                  >
-                    {stat.value}
-                  </p>
-                  <p
-                    className="font-[family-name:var(--font-inter)] text-xs tracking-widest uppercase"
-                    style={{ color: `${theme.textColor}50` }}
-                  >
-                    {stat.label}
-                  </p>
+                <div key={i} className="p-6" style={{ backgroundColor: statBg, border: `1px solid ${statBorder}` }}>
+                  <p className="font-[family-name:var(--font-playfair)] text-3xl font-bold mb-1" style={{ color: accentColor }}>{stat.value}</p>
+                  <p className="font-[family-name:var(--font-inter)] text-xs tracking-widest uppercase" style={{ color: isLight ? "#94a3b8" : `${textColor}44` }}>{stat.label}</p>
                 </div>
               ))}
             </div>

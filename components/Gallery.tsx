@@ -1,4 +1,5 @@
 "use client";
+import SectionHeader from "@/components/shared/SectionHeader";
 import config from "@/config.json";
 
 function imgUrl(path: string): string {
@@ -14,46 +15,28 @@ const LABELS = [
 ];
 
 export default function Gallery() {
-  const { theme } = config;
-  const images = config.images.gallery;
+  const { theme, gallery, images } = config;
+  const { accentColor, primaryColor, textColor, mode } = theme;
+  const isLight = mode === "light";
+  const bg = isLight ? "#f8fafc" : primaryColor;
+  const cardBorder = isLight ? "#e2e8f0" : `${textColor}0d`;
 
   return (
     <section
       id="galleri"
       className="py-32 px-6"
-      style={{ backgroundColor: theme.primaryColor }}
+      style={{ backgroundColor: bg }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <p
-            className="font-[family-name:var(--font-inter)] text-xs tracking-[0.4em] uppercase mb-4"
-            style={{ color: theme.accentColor }}
-          >
-            Portefølje
-          </p>
-          <h2
-            className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-semibold mb-6"
-            style={{ color: theme.textColor }}
-          >
-            Vårt Arbeid
-          </h2>
-          <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-20" style={{ backgroundColor: `${theme.accentColor}44` }} />
-            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.accentColor }} />
-            <div className="h-px w-20" style={{ backgroundColor: `${theme.accentColor}44` }} />
-          </div>
-          <p
-            className="font-[family-name:var(--font-inter)] text-sm mt-6 max-w-lg mx-auto font-light"
-            style={{ color: `${theme.textColor}40` }}
-          >
-            Hvert oppdrag utføres med stolthet og lidenskap for håndverket.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow={gallery.eyebrow}
+          heading={gallery.heading}
+          subheading={gallery.subheading}
+        />
 
         {/* Masonry grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {images.slice(0, 6).map((src, i) => {
+          {images.gallery.slice(0, 6).map((src, i) => {
             const url = imgUrl(src);
             const isWide = i === 3;
             return (
@@ -62,12 +45,12 @@ export default function Gallery() {
                 className={`relative group overflow-hidden transition-all duration-500 ${
                   isWide ? "md:col-span-2 aspect-[2/1]" : "aspect-square"
                 }`}
-                style={{ border: `1px solid ${theme.textColor}0d` }}
+                style={{ border: `1px solid ${cardBorder}` }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = `${theme.accentColor}44`)
+                  ((e.currentTarget as HTMLElement).style.borderColor = `${accentColor}44`)
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.borderColor = `${theme.textColor}0d`)
+                  ((e.currentTarget as HTMLElement).style.borderColor = cardBorder)
                 }
               >
                 {url ? (
@@ -80,11 +63,11 @@ export default function Gallery() {
                 ) : (
                   <div
                     className="w-full h-full flex items-center justify-center"
-                    style={{ backgroundColor: `${theme.textColor}05` }}
+                    style={{ backgroundColor: isLight ? "#f1f5f9" : `${textColor}05` }}
                   >
                     <span
                       className="font-[family-name:var(--font-inter)] text-xs tracking-widest uppercase"
-                      style={{ color: `${theme.accentColor}40` }}
+                      style={{ color: `${accentColor}60` }}
                     >
                       {LABELS[i]}
                     </span>
@@ -92,19 +75,19 @@ export default function Gallery() {
                 )}
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500" />
 
-                {/* Top gold line on hover */}
+                {/* Top accent line on hover */}
                 <div
                   className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(to right, transparent, ${theme.accentColor}, transparent)` }}
+                  style={{ background: `linear-gradient(to right, transparent, ${accentColor}, transparent)` }}
                 />
 
                 {/* Sliding label */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                   <p
                     className="font-[family-name:var(--font-inter)] text-xs tracking-widest uppercase text-center"
-                    style={{ color: theme.accentColor }}
+                    style={{ color: accentColor }}
                   >
                     {LABELS[i]}
                   </p>
