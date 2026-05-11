@@ -1,0 +1,35 @@
+{
+  "business": {
+    "name": "Frisør Hansen AS",
+    "tagline": "Profesjonell frisør i Oslo siden 1998",
+    "description": "Vi tilbyr profesjonell klipp og stell for herrer i Oslo sentrum. Med over 25 års erfaring gir vi deg det beste resultatet hver gang.",
+    "city": "Oslo",
+    "category": "barbershop",
+    "phone": "+47 22 11 22 33",
+    "email": "post@frisorhansen.no"
+  },
+  "theme": {
+    "primaryColor": "#1A1A1A",
+    "accentColor": "#C9A96E",
+    "heroStyle": "dark"
+  },
+  "hero": {
+    "headline": "En nettside som faktisk selger",
+    "subheadline": "Se hvordan Hansen Frisør ser ut med moderne design og rask innlasting",
+    "ctaText": "Book time nå"
+  },
+  "services": [
+    { "name": "Herreklipp", "desc": "Klassisk og moderne klipp tilpasset din stil og ansiktsform." },
+    { "name": "Skjeggstell", "desc": "Profesjonell forming og stell av skjegg med varmt håndkle." },
+    { "name": "Hodebunnsmassasje", "desc": "Avslappende massasje som stimulerer hårvekst og gir velvære." }
+  ],
+  "images": {
+    "hero": "barbershop/hero-01.jpg",
+    "gallery": [
+      "barbershop/shop-01.jpg",
+      "barbershop/shop-02.jpg",
+      "barbershop/style-01.jpg",
+      "barbershop/style-02.jpg"
+    ]
+  }
+}
