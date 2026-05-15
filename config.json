@@ -8,15 +8,15 @@
     "address": "Bygdøy allé 23, 0262 Oslo"
   },
   "theme": {
-    "mode": "dark",
-    "primaryColor": "#1a0a2e",
+    "mode": "light",
+    "primaryColor": "#f7f0eb",
     "accentColor": "#e8a842",
-    "textColor": "#f5f0e8",
-    "heroColor": "#2d1b4e",
+    "textColor": "#2d1b4e",
+    "heroColor": "#f7f0eb",
     "font": "playfair-inter"
   },
   "nav": {
-    "variant": "transparent-scroll"
+    "variant": "dark"
   },
   "sections": [
     "hero",
