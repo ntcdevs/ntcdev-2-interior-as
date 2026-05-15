@@ -3,7 +3,8 @@ import { ChevronDown } from "lucide-react";
 import config from "@/config.json";
 
 function imgUrl(p: string) {
-  if (p.startsWith("http")) return p;
+  if (!p) return "";
+  if (p.startsWith("http") || p.startsWith("/")) return p;
   const base = process.env.NEXT_PUBLIC_STORAGE_URL ?? "";
   return base ? `${base}/${p}` : "";
 }

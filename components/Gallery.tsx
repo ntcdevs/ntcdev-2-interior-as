@@ -3,7 +3,8 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import config from "@/config.json";
 
 function imgUrl(path: string): string {
-  if (path.startsWith("http")) return path;
+  if (!path) return "";
+  if (path.startsWith("http") || path.startsWith("/")) return path;
   const base = process.env.NEXT_PUBLIC_STORAGE_URL ?? "";
   if (!base) return "";
   return `${base}/${path}`;
