@@ -9,10 +9,10 @@
   },
   "theme": {
     "mode": "light",
-    "primaryColor": "#f7f0eb",
+    "primaryColor": "#ffffff",
     "accentColor": "#e8a842",
     "textColor": "#2d1b4e",
-    "heroColor": "#f7f0eb",
+    "heroColor": "#ffffff",
     "font": "playfair-inter"
   },
   "nav": {
