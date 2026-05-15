@@ -1,89 +1,146 @@
 {
   "business": {
-    "name": "Frisør Hansen AS",
+    "name": "+2 INTERIØR AS",
     "city": "Oslo",
-    "category": "barbershop",
-    "phone": "+47 22 11 22 33",
-    "email": "post@frisorhansen.no",
-    "address": "Karl Johans gate 12, 0154 Oslo"
+    "category": "other",
+    "phone": "976 71 809",
+    "email": "charlotte@pluss2.no",
+    "address": "Bygdøy allé 23, 0262 Oslo"
   },
   "theme": {
     "mode": "dark",
-    "primaryColor": "#0c0c0c",
-    "accentColor": "#c9a84c",
+    "primaryColor": "#0d1117",
+    "accentColor": "#c9a96e",
     "textColor": "#f5f0e8",
-    "heroColor": "#0c0c0c",
+    "heroColor": "#0d1117",
     "font": "playfair-inter"
   },
   "nav": {
     "variant": "transparent-scroll"
   },
-  "sections": ["hero", "trust-bar", "services", "about", "gallery", "testimonials", "contact"],
+  "sections": [
+    "hero",
+    "services",
+    "about",
+    "testimonials",
+    "contact"
+  ],
   "hero": {
-    "variant": "fullscreen",
-    "eyebrow": "Profesjonell Hårsalong · Oslo",
-    "headline": "Hansen",
-    "headlineAccent": "Frisør",
-    "subheadline": "Vi skaper mer enn bare hårklipp — vi skaper selvtillit. Opplev ekspertise og omsorg i hver behandling.",
-    "ctaText": "Bestill Time",
-    "ctaSecondary": "Se Tjenester"
+    "variant": "minimal",
+    "eyebrow": "Interiørdesign · Oslo",
+    "headline": "+2",
+    "headlineAccent": "Interiør",
+    "subheadline": "Vi skaper eksklusive og personlige interiørløsninger som forvandler ditt hjem til et sofistikert og harmonisk rom du elsker å leve i.",
+    "ctaText": "Book Konsultasjon",
+    "ctaSecondary": "Se Våre Tjenester"
   },
   "trustBar": {
     "items": [
-      { "value": "25+", "label": "År med erfaring" },
-      { "value": "5 000+", "label": "Fornøyde kunder" },
-      { "value": "100%", "label": "Fornøydhet garantert" },
-      { "value": "6", "label": "Dager åpent" }
+      {
+        "value": "10+",
+        "label": "Års erfaring"
+      },
+      {
+        "value": "350+",
+        "label": "Fullførte prosjekter"
+      },
+      {
+        "value": "100%",
+        "label": "Skreddersydd design"
+      },
+      {
+        "value": "5★",
+        "label": "Kundetilfredshet"
+      }
     ]
   },
   "services": {
     "variant": "grid-icons",
     "eyebrow": "Hva vi tilbyr",
     "heading": "Våre Tjenester",
-    "cta": "Bestill Time",
+    "cta": "Se Alle Tjenester",
     "items": [
-      { "name": "Herreklipp", "desc": "Klassisk og moderne klipp tilpasset din stil og ansiktsform. Inkluderer vask og føning.", "icon": "Scissors", "price": "Fra 350 kr" },
-      { "name": "Dameklipp", "desc": "Profesjonell klipp med konsultasjon, vask, klipp og styling etter dine ønsker.", "icon": "Sparkles", "price": "Fra 550 kr" },
-      { "name": "Skjeggstell", "desc": "Profesjonell forming og stell av skjegg med varmt håndkle og premium produkter.", "icon": "Star", "price": "Fra 250 kr" }
+      {
+        "name": "Interiørkonsultasjon",
+        "desc": "En grundig gjennomgang av dine rom med profesjonelle anbefalinger for farger, materialer og romplanløsning.",
+        "icon": "Home",
+        "price": "Fra 3 500 kr"
+      },
+      {
+        "name": "Helhetlig Interiørdesign",
+        "desc": "Komplett designprosjekt fra konsept til ferdig resultat — vi håndterer alt fra møbelvalg til styling og innkjøp.",
+        "icon": "Crown",
+        "price": ""
+      },
+      {
+        "name": "Styling & Visuell Oppgradering",
+        "desc": "Vi tilfører ditt eksisterende interiør nytt liv med strategisk styling, tekstiler og dekorative detaljer.",
+        "icon": "Sparkles",
+        "price": "Fra 5 000 kr"
+      }
     ]
   },
   "about": {
     "eyebrow": "Om Oss",
-    "heading": "Vår Historie",
-    "body": "Siden 1998 har vi servert kunder i Oslo med stolthet og lidenskap. Vi tror på at et godt hårklipp handler om mer enn utseende — det handler om selvtillit og velvære.",
-    "stat1": { "value": "25+", "label": "År med erfaring" },
-    "stat2": { "value": "5000+", "label": "Fornøyde kunder" },
-    "stat3": { "value": "100%", "label": "Fornøydhet garantert" }
+    "heading": "Design Med Sjel og Substans",
+    "body": "+2 Interiør ble grunnlagt i Oslo med en lidenskap for å skape rom som reflekterer menneskers personlighet og livsstil. Vi kombinerer skandinavisk estetikk med internasjonal eleganse, og leverer skreddersydde løsninger for både private hjem og kommersielle prosjekter. Hvert prosjekt starter med å lytte — fordi de beste interiørene forteller din historie.",
+    "stat1": {
+      "value": "10+",
+      "label": "Års erfaring"
+    },
+    "stat2": {
+      "value": "350+",
+      "label": "Fornøyde kunder"
+    },
+    "stat3": {
+      "value": "100%",
+      "label": "Personlig oppfølging"
+    }
   },
   "gallery": {
     "eyebrow": "Portefølje",
     "heading": "Vårt Arbeid",
-    "subheading": "Hvert oppdrag utføres med stolthet og lidenskap for håndverket."
+    "subheading": "Et utvalg av våre skreddersydde interiørprosjekter i Oslo og omegn."
   },
   "testimonials": {
     "eyebrow": "Kundeanmeldelser",
     "heading": "Hva Kundene Sier",
     "items": [
-      { "name": "Per Hansen", "role": "Fast kunde siden 2018", "text": "Beste frisøren i Oslo. Alltid fornøyd med resultatet og betjeningen er topp!", "rating": 5 },
-      { "name": "Lars Nilsen", "role": "Ny kunde", "text": "Fant Hansen Frisør via en venn og er veldig glad for det. Profesjonelt og hyggelig.", "rating": 5 },
-      { "name": "Ole Berg", "role": "Fast kunde siden 2020", "text": "Har prøvd mange frisører i Oslo men Hansen er klart best. Anbefales på det sterkeste.", "rating": 5 }
+      {
+        "name": "Ingrid Haugen",
+        "role": "Fast kunde siden 2021",
+        "text": "+2 Interiør forvandlet leiligheten vår fullstendig. Charlotte forstod visjonen vår umiddelbart og leverte et resultat som overgikk alle forventninger.",
+        "rating": 5
+      },
+      {
+        "name": "Thomas Berntsen",
+        "role": "Boligeier i Frogner",
+        "text": "Profesjonelt, kreativt og utrolig grundig. De tok seg tid til å forstå vår livsstil og skapte et hjem vi virkelig trives i hver eneste dag.",
+        "rating": 5
+      },
+      {
+        "name": "Marte Solberg",
+        "role": "Ny kunde",
+        "text": "En fantastisk opplevelse fra start til slutt. Kvaliteten på materialene og den helhetlige designtenkningen er i en klasse for seg.",
+        "rating": 5
+      }
     ]
   },
   "contact": {
     "eyebrow": "Ta Kontakt",
     "heading": "Kontakt Oss",
-    "subheading": "Vi svarer raskt og hjelper deg gjerne. Ta kontakt for time eller spørsmål."
+    "subheading": "Klar for å forvandle ditt rom? Ta kontakt for en uforpliktende samtale om ditt interiørprosjekt."
   },
   "images": {
-    "hero": "barbershop/hero-01.jpg",
-    "about": "barbershop/shop-01.jpg",
+    "hero": "other/hero-01.jpg",
+    "about": "other/shop-01.jpg",
     "gallery": [
-      "barbershop/shop-01.jpg",
-      "barbershop/shop-02.jpg",
-      "barbershop/style-01.jpg",
-      "barbershop/style-02.jpg",
-      "barbershop/hero-02.jpg",
-      "barbershop/shop-03.jpg"
+      "other/shop-01.jpg",
+      "other/shop-02.jpg",
+      "other/style-01.jpg",
+      "other/style-02.jpg",
+      "other/hero-02.jpg",
+      "other/shop-03.jpg"
     ]
   }
 }
